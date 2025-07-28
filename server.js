@@ -8,7 +8,7 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+const SERVER_URL = process.env.SERVER_URL;
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -224,8 +224,8 @@ app.get('/health', (req, res) => {
 
 // Start server
 // Start server
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`OTP Service running on http://0.0.0.0:${PORT}`);
+app.listen(PORT, SERVER_URL, () => {
+  console.log(`OTP Service running on http://${SERVER_URL}:${PORT}`);
 });
 
 // Cleanup expired OTPs every 5 minutes
